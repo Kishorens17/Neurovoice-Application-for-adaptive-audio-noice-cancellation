@@ -1,0 +1,2 @@
+-keep class org.pytorch.** { *; }
+-dontwarn org.pytorch.**

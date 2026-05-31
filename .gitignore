@@ -1,0 +1,28 @@
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python Caching & Tests
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# Data and audio outputs
+data/
+noisy.wav
+restored.wav
+
+# Local properties & Build configs
+local.properties
+.gradle/
+build/
+app/build/
+*.class
+
+# OS-specific
+Thumbs.db
+Desktop.ini
+.DS_Store

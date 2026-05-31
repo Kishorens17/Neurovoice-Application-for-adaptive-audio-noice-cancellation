@@ -1,0 +1,9 @@
+torch
+torchaudio
+torchvision
+numpy
+librosa
+soundfile
+tqdm
+pystoi
+scipy

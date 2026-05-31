@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_dark"
+    android:fillViewport="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp">
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/labelAi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AI AUDIO PROCESSING"
+            android:textColor="@color/accent_blue"
+            android:textSize="12sp"
+            android:letterSpacing="0.1"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NeuroVoice"
+            android:textColor="@color/text_primary"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/labelAi"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Neural noise cancellation &amp; clarity boost"
+            android:textColor="@color/text_secondary"
+            android:textSize="14sp"
+            app:layout_constraintTop_toBottomOf="@id/title"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Waveform Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/waveformCard"
+            style="@style/Theme.AudioEnhance.GlassCard"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:layout_marginTop="32dp"
+            app:layout_constraintTop_toBottomOf="@id/subtitle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+            
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@android:drawable/ic_btn_speak_now"
+                    app:tint="@color/accent_blue"/>
+                <TextView
+                    android:id="@+id/fileName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="No audio loaded"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="12sp"
+                    android:layout_marginTop="8dp"/>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Selection Container (Select + Play Input) -->
+        <LinearLayout
+            android:id="@+id/selectContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@id/waveformCard">
+            
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/btnSelect"
+                android:layout_width="0dp"
+                android:layout_height="64dp"
+                android:layout_weight="3"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/btn_dashed_border"
+                android:backgroundTint="@null"
+                android:text="Select Audio File"
+                android:textAllCaps="false"
+                android:textColor="@color/accent_blue"
+                android:textStyle="bold"
+                android:minHeight="0dp"
+                android:minWidth="0dp"
+                android:padding="0dp" />
+
+            <Button
+                android:id="@+id/btnPlayInput"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:text="▶"
+                android:textSize="20sp"
+                android:backgroundTint="@color/card_dark"
+                android:textColor="@color/text_primary"
+                android:enabled="false" />
+        </LinearLayout>
+
+        <!-- Noise Type Section -->
+        <TextView
+            android:id="@+id/labelNoise"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NOISE TYPE (AI FILTER)"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/selectContainer"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <GridLayout
+            android:id="@+id/noiseGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:columnCount="3"
+            app:layout_constraintTop_toBottomOf="@id/labelNoise"
+            app:layout_constraintStart_toStartOf="parent">
+            
+            <Button android:id="@+id/chipDog" android:text="🐕 Dog" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:textSize="11sp" android:padding="0dp"/>
+            <Button android:id="@+id/chipSiren" android:text="🚨 Siren" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:textSize="11sp" android:padding="0dp" />
+            <Button android:id="@+id/chipRain" android:text="🌧️ Rain" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:textSize="11sp" android:padding="0dp" />
+            
+            <Button android:id="@+id/chipWind" android:text="💨 Wind" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:textSize="11sp" android:padding="0dp" />
+            <Button android:id="@+id/chipEngine" android:text="⚙️ Engine" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:textSize="11sp" android:padding="0dp" />
+            <Button android:id="@+id/chipKeyboard" android:text="⌨️ Keys" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:textSize="11sp" android:padding="0dp" />
+            
+            <Button android:id="@+id/chipBaby" android:text="👶 Baby" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:textSize="11sp" android:padding="0dp" />
+            <Button android:id="@+id/chipDoor" android:text="🚪 Door" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:textSize="11sp" android:padding="0dp" />
+            <Button android:id="@+id/chipCustom" android:text="✏️ Custom" style="@style/Widget.Material3.Button.TonalButton" android:layout_width="0dp" android:layout_columnWeight="1" android:layout_margin="4dp" android:textSize="11sp" android:padding="0dp" />
+        </GridLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/noiseInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:hint="Tell us what to remove..."
+            app:layout_constraintTop_toBottomOf="@id/noiseGrid"
+            app:layout_constraintStart_toStartOf="parent"
+            style="@style/Widget.Material3.TextInputLayout.OutlinedBox">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/noisePrompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!-- Enhancement Mode Section -->
+        <TextView
+            android:id="@+id/labelMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ENHANCEMENT MODE"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintTop_toBottomOf="@id/noiseInputLayout"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <GridLayout
+            android:id="@+id/modeGrid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:columnCount="2"
+            app:layout_constraintTop_toBottomOf="@id/labelMode"
+            app:layout_constraintStart_toStartOf="parent">
+            
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/modeVoice"
+                style="@style/Theme.AudioEnhance.GlassCard"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp">
+                <LinearLayout android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:text="🎤 Voice Call" android:textColor="@color/text_primary" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="Optimize speech clarity" android:textColor="@color/text_secondary" android:textSize="11sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/modePodcast"
+                style="@style/Theme.AudioEnhance.GlassCard"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp">
+                <LinearLayout android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:text="🎧 Podcast" android:textColor="@color/text_primary" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="Balanced warmth &amp; depth" android:textColor="@color/text_secondary" android:textSize="11sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/modeMusic"
+                style="@style/Theme.AudioEnhance.GlassCard"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp">
+                <LinearLayout android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:text="🎵 Music" android:textColor="@color/text_primary" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="Preserve full frequency" android:textColor="@color/text_secondary" android:textSize="11sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/modeField"
+                style="@style/Theme.AudioEnhance.GlassCard"
+                android:layout_width="0dp"
+                android:layout_height="110dp"
+                android:layout_columnWeight="1"
+                android:layout_margin="4dp">
+                <LinearLayout android:orientation="vertical" android:padding="16dp" android:layout_width="match_parent" android:layout_height="wrap_content">
+                    <TextView android:text="🌿 Field Recording" android:textColor="@color/text_primary" android:textStyle="bold" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+                    <TextView android:text="Ambient preservation" android:textColor="@color/text_secondary" android:textSize="11sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp"/>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </GridLayout>
+
+        <!-- Main Action Button -->
+        <Button
+            android:id="@+id/btnEnhance"
+            android:layout_width="match_parent"
+            android:layout_height="64dp"
+            android:layout_marginTop="32dp"
+            android:text="✨ Enhance Audio"
+            android:backgroundTint="@color/accent_blue"
+            android:textColor="@color/bg_dark"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/modeGrid"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:visibility="gone"
+            android:indeterminate="true"
+            app:layout_constraintTop_toBottomOf="@id/btnEnhance"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <!-- Bottom Buttons Container -->
+        <LinearLayout
+            android:id="@+id/bottomButtons"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="40dp"
+            app:layout_constraintTop_toBottomOf="@id/progressBar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+            
+            <Button
+                android:id="@+id/btnPlay"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="12dp"
+                android:text="▶ Play Result"
+                android:backgroundTint="@color/card_dark"
+                android:textColor="@color/text_primary"
+                android:enabled="false" />
+                
+            <Button
+                android:id="@+id/btnDownload"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:text="📥 Download"
+                android:backgroundTint="@color/card_dark"
+                android:textColor="@color/text_primary"
+                android:enabled="false" />
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
